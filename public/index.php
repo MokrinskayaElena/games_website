@@ -1,20 +1,13 @@
-<?php
+@extends('layout')
 
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
+@section('title', 'Игры')
 
-define('LARAVEL_START', microtime(true));
+@section('content')
 
-// Determine if the application is in maintenance mode...
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
-    require $maintenance;
-}
+<h2>Список всех игр </h2>
 
-// Register the Composer autoloader...
-require __DIR__.'/../vendor/autoload.php';
+<a href="{{ route('level') }}" class="btn btn-secondary btn-sm me-2" title="Три в ряд">
+      <img class="images" src="images/Three_in_row.png" alt="Описание изображения">
+</a>
 
-// Bootstrap Laravel and handle the request...
-/** @var Application $app */
-$app = require_once __DIR__.'/../bootstrap/app.php';
-
-$app->handleRequest(Request::capture());
+@endsection
