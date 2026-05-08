@@ -26,4 +26,3 @@ function initializeLevelButtons() {
 window.addEventListener('DOMContentLoaded', initializeLevelButtons);
 
 // createLevelButtons();
-

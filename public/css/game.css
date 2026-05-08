@@ -177,3 +177,55 @@ cursor: pointer;
 #exitConfirm button:hover {
   background-color: #d2d1d1;
 }
+
+.between {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+.section{
+    /* color: #372821; */
+    margin: 3vw 5vw 1vw 5vw;   
+    text-align: center
+    /* display:flex; */   
+}
+.section2 {
+    margin-left: 7vw;
+    width: 30vw;
+}
+.section1{
+    margin-bottom: 10vw;
+}
+.section3{
+    margin-bottom: 15vw;
+}
+
+h1 {
+    font-size: 3vw;
+    /* padding-top: 10%;
+    padding-left: 10%; */
+    /* color: #372821; */
+    letter-spacing: 0.7vw;
+}
+h2 {
+    font-size: 1.5vw;
+}
+p{
+    font-size: 1.3vw;
+    display: flex;
+    margin-top: 1vw;
+}
+
+/* .button {
+    padding: 0.5vw;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.5vw;
+    color: #2e4b80;
+    margin-top: 1vw;
+} */
+/* .fas{
+    font-size: 1.8vw;
+    float: left;
+    color: #372821;
+} */

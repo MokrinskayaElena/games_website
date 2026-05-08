@@ -8,5 +8,9 @@ class UserLevel extends Model
 {
     protected $table = 'user_levels';
 
-    protected $fillable = ['user_id', 'level_number'];
+    // protected $fillable = ['user_id', 'level_id'];
+    public function level()
+    {
+        return $this->belongsTo(Level::class, 'level_id');
+    }
 }

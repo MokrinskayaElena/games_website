@@ -41,7 +41,7 @@ class GamesController extends Controller
         \App\Models\UserLevel::updateOrCreate(
             [
                 'user_id' => $user->id,
-                'level_number' => $level,
+                'level_id' => $level,
             ],
             [
                 'updated_at' => now(),
@@ -56,11 +56,49 @@ class GamesController extends Controller
 
         $completedLevels = \DB::table('user_levels')
             ->where('user_id', $userId)
-            ->pluck('level_number')
+            ->pluck('level_id')
             ->toArray();
 
         return view('level_three_in_row', [
             'completedLevels' => $completedLevels,
+        ]);
+    }
+
+    // public function showStatistics()
+    // {
+    //     $userId = auth()->id(); // или другой способ получения текущего пользователя
+
+    //     // Получение уровней и дат прохождения
+    //    $levels = \DB::table('user_levels')
+    //     ->where('user_id', $userId)
+    //     ->select('level_id', 'created_at')
+    //     ->get()
+    //     ->map(function($item) {
+    //         $item->created_at = \Illuminate\Support\Carbon::parse($item->created_at);
+    //         return $item;
+    //     });
+    //     // Передача данных в представление
+    //     return view('statistics', [
+    //         'completedLevels' => $levels,
+    //     ]);
+    // }
+    public function showStatistics()
+    {
+        $userId = auth()->id();
+
+        $levels = \App\Models\UserLevel::with(['level.game'])
+            ->where('user_id', $userId)
+            ->get()
+            ->map(function($userLevel) {
+                return [
+                    'level_id' => $userLevel->level->id,
+                    'created_at' => $userLevel->created_at,
+                    'game_name' => $userLevel->level->game->name,
+                ];
+            });
+
+        return view('statistics', [
+            'completedLevels' => $levels,
         ]);
     }
 }

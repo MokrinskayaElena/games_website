@@ -9,13 +9,17 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/games', [GamesController::class, 'index'])->name('games');
 
-Route::get('/three_in_row', function () {return view('three_in_row');}) ->middleware('auth');
+Route::get('/three_in_row', function () {return view('three_in_row');})->name('three_in_row')->middleware('auth');
+Route::get('/statistics', function () {return view('statistics');})->name('statistics')->middleware('auth');
+// Route::get('/three_in_row', function () {return view('three_in_row');}) ->middleware('auth');
 // Route::get('/level_three_in_row', function () {return view('level_three_in_row');})->name('level');
 
 
 Route::post('/progress', [GamesController::class, 'updateUserProgress'])->name('progress');
 // Route::get('/levels', [GamesController::class, 'showLevels'])->name('levels.show');
 Route::get('/level_three_in_row', [GamesController::class, 'showLevels'])->name('level');
+
+Route::get('/statistics', [GamesController::class, 'showStatistics'])->name('statistics');
 
 // Страница регистрации
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');

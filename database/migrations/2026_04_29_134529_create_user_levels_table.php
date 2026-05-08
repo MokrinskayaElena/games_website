@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('user_levels', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->integer('level_number');
+            $table->unsignedBigInteger('level_id'); // ссылка на уровень
             $table->timestamps();
 
-            $table->unique(['user_id', 'level_number']);
+            $table->unique(['user_id', 'level_id']);
 
-            // Добавляем внешний ключ
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade'); // связь с таблицей levels
         });
     }
 
